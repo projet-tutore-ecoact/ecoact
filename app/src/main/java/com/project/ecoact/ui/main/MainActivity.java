@@ -1,5 +1,6 @@
-package com.project.ecoact;
+package com.project.ecoact.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -13,7 +14,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.project.ecoact.R;
 import com.project.ecoact.databinding.ActivityMainBinding;
+import com.project.ecoact.ui.user.UserActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.navUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(intent);
             }
         });
     }
