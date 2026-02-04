@@ -9,13 +9,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.project.ecoact.R;
+import com.project.ecoact.data.entity.user.User;
+import com.project.ecoact.domain.model.UserService;
 
 public class UserActivity extends AppCompatActivity {
     private EditText lastNameId, firstNameId;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userService = new UserService(this);
 
         setContentView(R.layout.user_main);
 
@@ -26,13 +30,21 @@ public class UserActivity extends AppCompatActivity {
         addButtonId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = lastNameId.getText().toString().trim();
-                String email = firstNameId.getText().toString().trim();
+                String firstName = lastNameId.getText().toString().trim();
+                String lastName = firstNameId.getText().toString().trim();
 
-                if(username.isEmpty() || email.isEmpty()) {
+                User toCreate = new User();
+                toCreate.setFirstName(firstName);
+                toCreate.setLastName(lastName);
+
+                userService.insert(toCreate);
+
+                User user = userService.getAll().get(0);
+
+                if(user.getFirstName().isEmpty() || user.getLastName().isEmpty()) {
                     Toast.makeText(UserActivity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(UserActivity.this, "Username: " + username + "\nEmail: " + email, Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this, "First name: " + firstName + "\nLast Name: " + lastName, Toast.LENGTH_LONG).show();
                 }
             }
         });
