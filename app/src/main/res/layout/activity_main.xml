@@ -7,16 +7,18 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.main.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
-
-    </com.google.android.material.appbar.AppBarLayout>
     <Button
         android:id="@+id/nav_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
