@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EcoAct">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.EcoAct">
             <intent-filter>
@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.user.UserActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
