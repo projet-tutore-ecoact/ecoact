@@ -6,27 +6,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.ecoact.HomeFragment"
+        android:name="com.project.ecoact.ui.fragments.HomeFragment"
         android:label="Home" />
 
     <fragment
         android:id="@+id/devicesFragment"
-        android:name="com.example.ecoact.DevicesFragment"
+        android:name="com.project.ecoact.ui.fragments.DevicesFragment"
         android:label="Devices" />
 
     <fragment
         android:id="@+id/habitsFragment"
-        android:name="com.example.ecoact.HabitsFragment"
+        android:name="com.project.ecoact.ui.fragments.HabitsFragment"
         android:label="Habits" />
 
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.ecoact.ShopFragment"
+        android:name="com.project.ecoact.ui.fragments.ShopFragment"
         android:label="Shop" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ecoact.ProfileFragment"
+        android:name="com.project.ecoact.ui.fragments.ProfileFragment"
         android:label="Profile" />
 
 </navigation>

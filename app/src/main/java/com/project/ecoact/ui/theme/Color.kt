@@ -1,4 +1,4 @@
-package com.example.ecoact.ui.theme
+package com.project.ecoact.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
