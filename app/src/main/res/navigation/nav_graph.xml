@@ -20,13 +20,13 @@
         android:label="Habits" />
 
     <fragment
-        android:id="@+id/shopFragment"
-        android:name="com.project.ecoact.ui.fragments.ShopFragment"
-        android:label="Shop" />
-
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.project.ecoact.ui.fragments.ProfileFragment"
         android:label="Profile" />
 
+
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.project.ecoact.ui.fragments.TestFragment"
+        android:label="Shop" />
 </navigation>
