@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EcoAct</string>
+
+    <!-- Authentication -->
+    <string name="login">Connexion</string>
+    <string name="register">S\'inscrire</string>
+
+    <!-- Bottom Navigation -->
+    <string name="home">Accueil</string>
+    <string name="habits">Habitudes</string>
+    <string name="devices">Appareils</string>
+    <string name="shop">Boutique</string>
+    <string name="profile">Profil</string>
 </resources>
