@@ -20,46 +20,46 @@ import com.project.ecoact.data.entity.User;
 import com.project.ecoact.viewModel.UserViewModel;
 
 public class TestFragment extends Fragment {
-
-    private UserViewModel viewModel;
-    private UserAdapter adapter;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.brouillon, container, false);
-
-        EditText etNom = view.findViewById(R.id.etNom);
-        EditText etPrenom = view.findViewById(R.id.etPrenom);
-        Button btnAjouter = view.findViewById(R.id.btnAjouter);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-
-        adapter = new UserAdapter();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
-
-        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
-
-        // 🔥 Observe les données
-        viewModel.getUsers().observe(getViewLifecycleOwner(), personnes -> {
-            adapter.setData(personnes);
-        });
-
-        btnAjouter.setOnClickListener(v -> {
-            String nom = etNom.getText().toString().trim();
-            String prenom = etPrenom.getText().toString().trim();
-
-            if (TextUtils.isEmpty(nom) || TextUtils.isEmpty(prenom)) {
-                Toast.makeText(getContext(), "Champs requis", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            viewModel.insert(new User(nom, prenom));
-
-            etNom.setText("");
-            etPrenom.setText("");
-        });
-
-        return view;
-    }
+//
+//    private UserViewModel viewModel;
+//    private UserAdapter adapter;
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//
+//        View view = inflater.inflate(R.layout.brouillon, container, false);
+//
+//        EditText etNom = view.findViewById(R.id.etNom);
+//        EditText etPrenom = view.findViewById(R.id.etPrenom);
+//        Button btnAjouter = view.findViewById(R.id.btnAjouter);
+//        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+//
+//        adapter = new UserAdapter();
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setAdapter(adapter);
+//
+//        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+//
+//        // 🔥 Observe les données
+//        viewModel.getUsers().observe(getViewLifecycleOwner(), personnes -> {
+//            adapter.setData(personnes);
+//        });
+//
+//        btnAjouter.setOnClickListener(v -> {
+//            String nom = etNom.getText().toString().trim();
+//            String prenom = etPrenom.getText().toString().trim();
+//
+//            if (TextUtils.isEmpty(nom) || TextUtils.isEmpty(prenom)) {
+//                Toast.makeText(getContext(), "Champs requis", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//
+//            viewModel.insert(new User(nom, prenom));
+//
+//            etNom.setText("");
+//            etPrenom.setText("");
+//        });
+//
+//        return view;
+//    }
 }

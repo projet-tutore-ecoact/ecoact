@@ -25,8 +25,47 @@ public class UserRepository {
         return userDao.getAll();
     }
 
+    public LiveData<User> getUserById(Long id) {
+        return userDao.getUserById(id);
+    }
+
+    public User getUserByEmail(String email) {
+        return userDao.findByEmail(email);
+    }
+
+    /**
+     * Récupérer un utilisateur par ID (synchrone)
+     * Utile pour la session et ProfileFragment
+     */
+    public User getUserByIdSync(Long id) {
+        final User[] user = new User[1];
+        Thread thread = new Thread(() -> user[0] = userDao.getUserByIdSync(id));
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return user[0];
+    }
+
+    public long insertUser(User user) throws InterruptedException {
+        final long[] userId = new long[1];
+        Thread thread = new Thread(() -> userId[0] = userDao.insert(user));
+        thread.start();
+        thread.join();
+        return userId[0];
+    }
+
     public void insert(User... user) {
         executor.execute(() -> userDao.insertAll(user));
     }
 
+    public void update(User user) {
+        executor.execute(() -> userDao.update(user));
+    }
+
+    public void delete(User user) {
+        executor.execute(() -> userDao.delete(user));
+    }
 }

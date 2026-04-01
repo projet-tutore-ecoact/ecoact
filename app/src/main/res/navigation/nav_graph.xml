@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
+    <!-- Authentication Fragments -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.project.ecoact.ui.fragments.LoginFragment"
+        android:label="Connexion"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.project.ecoact.ui.fragments.RegisterFragment"
+        android:label="S'inscrire"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Main Navigation Fragments -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.project.ecoact.ui.fragments.HomeFragment"
@@ -22,11 +55,21 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.project.ecoact.ui.fragments.ProfileFragment"
-        android:label="Profile" />
+        android:label="Profile">
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.project.ecoact.ui.fragments.ShopFragment"
+        android:label="Shop" />
 
     <fragment
         android:id="@+id/testFragment"
         android:name="com.project.ecoact.ui.fragments.TestFragment"
-        android:label="Shop" />
+        android:label="Test" />
 </navigation>
