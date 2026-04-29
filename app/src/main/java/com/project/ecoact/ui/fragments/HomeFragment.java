@@ -19,9 +19,9 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.project.ecoact.R;
-import com.project.ecoact.data.AppDatabase;
+import com.project.ecoact.data.databaseConf.AppDatabase;
 import com.project.ecoact.data.DataInitializer;
-import com.project.ecoact.data.EnergyEntity;
+import com.project.ecoact.data.entity.EnergyEntity;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {

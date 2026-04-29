@@ -2,6 +2,10 @@ package com.project.ecoact.data;
 
 import android.content.Context;
 
+import com.project.ecoact.data.dao.EnergyDao;
+import com.project.ecoact.data.databaseConf.AppDatabase;
+import com.project.ecoact.data.entity.EnergyEntity;
+
 public class DataInitializer {
 
     public static void initData(Context context) {
