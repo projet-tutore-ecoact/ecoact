@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.project.ecoact.data.entity.EnergyEntity;
 import com.project.ecoact.data.entity.User;
 
 import java.util.List;

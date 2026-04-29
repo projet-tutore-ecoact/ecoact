@@ -50,9 +50,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         viewBinding = true
         compose = true

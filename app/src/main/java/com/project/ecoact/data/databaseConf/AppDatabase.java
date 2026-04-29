@@ -8,7 +8,9 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.project.ecoact.data.dao.EnergyDao;
 import com.project.ecoact.data.dao.UserDao;
+import com.project.ecoact.data.entity.EnergyEntity;
 import com.project.ecoact.data.entity.User;
 
 /**
@@ -20,7 +22,7 @@ import com.project.ecoact.data.entity.User;
  * - Migrations des versions
  * - Instance singleton
  */
-@Database(entities = {User.class}, version = 2, exportSchema = true)
+@Database(entities = {User.class, EnergyEntity.class}, version = 3, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
 
@@ -74,6 +76,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     // ============ DAOs ============
     public abstract UserDao userDao();
+    public abstract EnergyDao energyDao();
 
     // ============ Migrations ============
     // 
