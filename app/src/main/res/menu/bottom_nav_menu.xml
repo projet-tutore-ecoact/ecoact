@@ -9,10 +9,22 @@
     <item
         android:id="@+id/habitsFragment"
         android:title="Habitudes" />
+<<<<<<< HEAD
     <item
         android:id="@+id/shopFragment"
         android:title="Boutique" />
     <item
         android:id="@+id/profileFragment"
         android:title="Profil" />
+=======
+<!--    <item-->
+<!--        android:id="@+id/shopFragment"-->
+<!--        android:title="Boutique" />-->
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Profil" />
+    <item
+        android:id="@+id/testFragment"
+        android:title="Brouillon" />
+>>>>>>> origin/dev
 </menu>
