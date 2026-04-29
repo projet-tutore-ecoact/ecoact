@@ -8,8 +8,10 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.project.ecoact.data.dao.DeviceDao;
 import com.project.ecoact.data.dao.EnergyDao;
 import com.project.ecoact.data.dao.UserDao;
+import com.project.ecoact.data.entity.DeviceEntity;
 import com.project.ecoact.data.entity.EnergyEntity;
 import com.project.ecoact.data.entity.User;
 
@@ -22,7 +24,7 @@ import com.project.ecoact.data.entity.User;
  * - Migrations des versions
  * - Instance singleton
  */
-@Database(entities = {User.class, EnergyEntity.class}, version = 3, exportSchema = true)
+@Database(entities = {User.class, EnergyEntity.class, DeviceEntity.class}, version = 4, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
 
@@ -41,6 +43,26 @@ public abstract class AppDatabase extends RoomDatabase {
     };
 
     /**
+     * Migration v3->v4: Ajout de la gestion des appareils utilisateur.
+     */
+    public static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `devices` (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                    "`user_id` INTEGER NOT NULL, " +
+                    "`type` TEXT, " +
+                    "`reference` TEXT, " +
+                    "`daily_usage_hours` REAL NOT NULL, " +
+                    "`daily_consumption_kwh` REAL NOT NULL, " +
+                    "`created_at` INTEGER NOT NULL, " +
+                    "`updated_at` INTEGER NOT NULL, " +
+                    "FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE)");
+            database.execSQL("CREATE INDEX IF NOT EXISTS `index_devices_user_id` ON `devices` (`user_id`)");
+        }
+    };
+
+    /**
      * Obtient l'instance singleton de la base de données.
      * Thread-safe avec double-check locking.
      * 
@@ -53,7 +75,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "ecoact_db")
-                            .addMigrations(MIGRATION_1_2)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_3_4)
                             .fallbackToDestructiveMigration()  // Utile en dev pour les problèmes de migration
                             .allowMainThreadQueries()           // Temporaire pour déboguer
                             .build();
@@ -77,6 +99,7 @@ public abstract class AppDatabase extends RoomDatabase {
     // ============ DAOs ============
     public abstract UserDao userDao();
     public abstract EnergyDao energyDao();
+    public abstract DeviceDao deviceDao();
 
     // ============ Migrations ============
     // 
