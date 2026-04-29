@@ -17,5 +17,5 @@
         android:title="Profil" />
     <item
         android:id="@+id/testFragment"
-        android:title="Brouillon" />
+        android:title="Demo API" />
 </menu>
