@@ -70,6 +70,7 @@
 
     <fragment
         android:id="@+id/testFragment"
-        android:name="com.project.ecoact.ui.fragments.TestFragment"
-        android:label="Test" />
+        android:name="com.project.ecoact.ui.fragments.ImpactDemoFragment"
+        android:label="Impact Demo"
+        tools:layout="@layout/fragment_impact_demo" />
 </navigation>
