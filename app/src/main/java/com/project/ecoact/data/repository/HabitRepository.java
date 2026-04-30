@@ -56,4 +56,18 @@ public class HabitRepository {
         thread.start();
         thread.join();
     }
+    public String getHabitsSummary(Long userId) {
+    List<HabitEntity> habits = getHabitsByUserSync(userId);
+    if (habits == null || habits.isEmpty()) {
+        return "Aucune habitude enregistrée";
+    }
+    StringBuilder summary = new StringBuilder();
+    for (HabitEntity habit : habits) {
+        summary.append(habit.getQuestion())
+               .append(" (")
+               .append(habit.getFrequency())
+               .append("), ");
+    }
+    return summary.toString();
+}
 }

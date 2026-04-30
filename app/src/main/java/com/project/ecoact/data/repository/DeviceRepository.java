@@ -55,4 +55,20 @@ public class DeviceRepository {
         thread.start();
         thread.join();
     }
+    public String getDevicesSummary(Long userId) {
+    List<DeviceEntity> devices = getDevicesByUserSync(userId);
+    if (devices == null || devices.isEmpty()) {
+        return "Aucun appareil enregistré";
+    }
+    StringBuilder summary = new StringBuilder();
+    for (DeviceEntity device : devices) {
+        summary.append(device.getType())
+               .append(" ")
+               .append(device.getReference())
+               .append(" (")
+               .append(device.getDailyUsageHours())
+               .append("h/jour), ");
+    }
+    return summary.toString();
+}
 }
