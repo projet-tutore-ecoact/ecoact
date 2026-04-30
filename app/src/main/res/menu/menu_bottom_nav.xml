@@ -25,8 +25,9 @@
         android:id="@+id/profileFragment"
         android:title="Profil"
         android:icon="@drawable/ic_profile"/>
-    <item
-        android:id="@+id/testFragment"
-        android:title="Brouillon"
-        android:icon="@drawable/ic_shop"/>
+   
+        <item
+    android:id="@+id/adviceFragment"
+    android:title="Conseils"
+    android:icon="@drawable/ic_shop"/>
 </menu>
