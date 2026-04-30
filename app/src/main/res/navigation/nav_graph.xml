@@ -73,4 +73,8 @@
         android:name="com.project.ecoact.ui.fragments.ImpactDemoFragment"
         android:label="Impact Demo"
         tools:layout="@layout/fragment_impact_demo" />
+        <fragment
+    android:id="@+id/adviceFragment"
+    android:name="com.project.ecoact.ui.fragments.AdviceFragment"
+    android:label="Conseils" />
 </navigation>
