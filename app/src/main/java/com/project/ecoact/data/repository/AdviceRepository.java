@@ -31,11 +31,12 @@ public class AdviceRepository {
 
     public void getAdvice(String habitsData, String devicesData, AdviceCallback callback) {
         String prompt = "Tu es un assistant éco-responsable. " +
-        "Voici les habitudes de l'utilisateur : " + habitsData + ". " +
-        "Voici ses appareils : " + devicesData + ". " +
-        "Réponds en français avec 2 sections :\n" +
-        "1. CONSEILS : Donne 3 conseils personnalisés courts et pratiques pour réduire sa consommation d'énergie.\n" +
-        "2. APPAREILS SUGGÉRÉS : Suggère des appareils économes en énergie et respectueux de l'environnement  adaptés au profil de l'utilisateur pour remplacer certains des appareils qu'il utilise actuellement ( Ne propose pas plus de 4 appareils tu peux en proposer 1 ou 2 ou 3 mais grand maximun 4 ) avec une brève explication.";
+                "Voici les habitudes de l'utilisateur : " + habitsData + ". " +
+                "Voici ses appareils : " + devicesData + ". " +
+                "Réponds en français avec 2 sections :\n" +
+                "1. CONSEILS : Donne 3 conseils personnalisés courts et pratiques pour réduire sa consommation d'énergie.\n" +
+                "2. PRIORITÉS : Indique les 1 à 3 usages à améliorer en priorité. " +
+                "Ne donne pas de lien d'achat ni de référence produit exacte : la marketplace de l'application les affiche déjà.";
 
         List<MistralRequest.Message> messages = Arrays.asList(
                 new MistralRequest.Message("user", prompt)

@@ -2,68 +2,153 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="@color/bg_light"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="96dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mes conseils personnalisés"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#2E7D32"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="6dp"
+            android:text="Conseils &amp; marketplace &#233;co"
+            android:textColor="@color/text_dark"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Basés sur vos appareils et habitudes"
-            android:textSize="14sp"
-            android:textColor="#757575"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="18dp"
+            android:text="Conseils IA et appareils partenaires adapt&#233;s &#224; votre profil."
+            android:textColor="@color/text_gray"
+            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_generate_advice"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Générer mes conseils"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:layout_marginBottom="24dp"/>
-
-        <ProgressBar
-            android:id="@+id/progress_advice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginBottom="16dp"/>
-
-        <TextView
-            android:id="@+id/tv_advice_error"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#E53935"
-            android:textSize="14sp"
-            android:visibility="gone"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="22dp"
+            android:background="@drawable/bg_advice_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_advice"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Conseils personnalis&#233;s"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="Mistral analyse vos appareils et habitudes, puis propose des actions concr&#232;tes."
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btn_generate_advice"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="14dp"
+                android:backgroundTint="@color/primary_orange"
+                android:text="G&#233;n&#233;rer mes conseils"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/progress_advice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_advice_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:textColor="#E53935"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_advice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6dp"
+                android:text="Appuyez sur le bouton pour g&#233;n&#233;rer vos conseils personnalis&#233;s."
+                android:textColor="@color/text_dark"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_advice_cards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="#212121"
-            android:lineSpacingExtra="6dp"
-            android:padding="16dp"
-            android:background="#FFFFFF"
-            android:elevation="2dp"/>
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_marketplace_panel"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Appareils sugg&#233;r&#233;s"
+                android:textColor="@color/text_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_marketplace_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:textColor="@color/text_gray"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_suggest_devices"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:backgroundTint="@color/primary_orange"
+                android:text="Sugg&#233;rer des appareils"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <ProgressBar
+                android:id="@+id/progress_marketplace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_marketplace_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
     </LinearLayout>
 </ScrollView>

@@ -9,10 +9,12 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.project.ecoact.data.dao.DeviceDao;
+import com.project.ecoact.data.dao.EcoProductDao;
 import com.project.ecoact.data.dao.EnergyDao;
 import com.project.ecoact.data.dao.HabitDao;
 import com.project.ecoact.data.dao.UserDao;
 import com.project.ecoact.data.entity.DeviceEntity;
+import com.project.ecoact.data.entity.EcoProductEntity;
 import com.project.ecoact.data.entity.EnergyEntity;
 import com.project.ecoact.data.entity.HabitEntity;
 import com.project.ecoact.data.entity.User;
@@ -26,7 +28,7 @@ import com.project.ecoact.data.entity.User;
  * - Migrations des versions
  * - Instance singleton
  */
-@Database(entities = {User.class, EnergyEntity.class, DeviceEntity.class, HabitEntity.class}, version = 5, exportSchema = true)
+@Database(entities = {User.class, EnergyEntity.class, DeviceEntity.class, HabitEntity.class, EcoProductEntity.class}, version = 6, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
 
@@ -89,9 +91,35 @@ public abstract class AppDatabase extends RoomDatabase {
     };
 
     /**
+     * Migration v5->v6: Ajout de la marketplace d'appareils partenaires sobres.
+     */
+    public static final Migration MIGRATION_5_6 = new Migration(5, 6) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `eco_products` (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                    "`category` TEXT, " +
+                    "`brand` TEXT, " +
+                    "`reference` TEXT, " +
+                    "`name` TEXT, " +
+                    "`energy_class` TEXT, " +
+                    "`energy_info` TEXT, " +
+                    "`repairability_score` TEXT, " +
+                    "`price_label` TEXT, " +
+                    "`purchase_url` TEXT, " +
+                    "`reason` TEXT, " +
+                    "`priority_score` INTEGER NOT NULL, " +
+                    "`active` INTEGER NOT NULL, " +
+                    "`created_at` INTEGER NOT NULL)");
+            database.execSQL("CREATE INDEX IF NOT EXISTS `index_eco_products_category` ON `eco_products` (`category`)");
+            database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_eco_products_category_reference` ON `eco_products` (`category`, `reference`)");
+        }
+    };
+
+    /**
      * Obtient l'instance singleton de la base de données.
      * Thread-safe avec double-check locking.
-     * 
+     *
      * @param context Contexte Android
      * @return Instance unique de AppDatabase
      */
@@ -101,7 +129,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "ecoact_db")
-                            .addMigrations(MIGRATION_1_2, MIGRATION_3_4, MIGRATION_4_5)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
                             .fallbackToDestructiveMigration()  // Utile en dev pour les problèmes de migration
                             .allowMainThreadQueries()           // Temporaire pour déboguer
                             .build();
@@ -127,6 +155,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract EnergyDao energyDao();
     public abstract DeviceDao deviceDao();
     public abstract HabitDao habitDao();
+    public abstract EcoProductDao ecoProductDao();
 
     // ============ Migrations ============
     // 

@@ -1,11 +1,15 @@
 package com.project.ecoact;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -38,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
             navController = navHostFragment.getNavController();
             bottomNav = findViewById(R.id.bottom_nav);
             NavigationUI.setupWithNavController(bottomNav, navController);
+            applySystemBarInsets();
 
-            // ✅ NE PAS appeler navigate() ici! Le FragmentManager n'est pas prêt.
+            //  NE PAS appeler navigate() ici! Le FragmentManager n'est pas prêt.
             // À la place, on laisse le startDestination du navGraph afficher LoginFragment.
             // LoginFragment va vérifier la session et naviguer si nécessaire.
 
@@ -52,5 +57,44 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void applySystemBarInsets() {
+        if (Build.VERSION.SDK_INT < 35) {
+            return;
+        }
+
+        View root = findViewById(R.id.main_root);
+        int rootPaddingLeft = root.getPaddingLeft();
+        int rootPaddingTop = root.getPaddingTop();
+        int rootPaddingRight = root.getPaddingRight();
+        int rootPaddingBottom = root.getPaddingBottom();
+
+        int bottomNavPaddingLeft = bottomNav.getPaddingLeft();
+        int bottomNavPaddingTop = bottomNav.getPaddingTop();
+        int bottomNavPaddingRight = bottomNav.getPaddingRight();
+        int bottomNavPaddingBottom = bottomNav.getPaddingBottom();
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, windowInsets) -> {
+            Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+            view.setPadding(
+                    rootPaddingLeft,
+                    rootPaddingTop + systemBars.top,
+                    rootPaddingRight,
+                    rootPaddingBottom
+            );
+
+            bottomNav.setPadding(
+                    bottomNavPaddingLeft,
+                    bottomNavPaddingTop,
+                    bottomNavPaddingRight,
+                    bottomNavPaddingBottom + systemBars.bottom
+            );
+
+            return windowInsets;
+        });
+
+        ViewCompat.requestApplyInsets(root);
     }
 }
