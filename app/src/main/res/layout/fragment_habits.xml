@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView pour pouvoir défiler si le contenu dépasse la taille de l'écran -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
 
+    <!-- Conteneur principal de l'écran de gestion des habitudes -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
+        <!-- En-tête de la page avec le nom de l'application et le titre -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,6 +21,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Nom de l'application -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,6 +29,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
+            <!-- Titre de l'écran -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,6 +40,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Carte qui affiche le score global des habitudes -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +49,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Libellé du score global -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +57,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
+            <!-- Points obtenus par rapport au total possible -->
             <TextView
                 android:id="@+id/tv_habit_points"
                 android:layout_width="match_parent"
@@ -59,6 +68,7 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
+            <!-- Nombre d'habitudes enregistrées -->
             <TextView
                 android:id="@+id/tv_habit_count"
                 android:layout_width="match_parent"
@@ -68,6 +78,7 @@
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
+            <!-- Titre de la progression -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,6 +87,7 @@
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
+            <!-- Barre qui affiche la progression des habitudes -->
             <ProgressBar
                 android:id="@+id/progress_habits"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -85,6 +97,7 @@
                 android:max="100"
                 android:progress="0" />
 
+            <!-- Pourcentage de progression affiché à droite -->
             <TextView
                 android:id="@+id/tv_habits_percent"
                 android:layout_width="match_parent"
@@ -96,6 +109,7 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <!-- Bouton pour afficher le formulaire d'ajout d'une habitude -->
         <Button
             android:id="@+id/btn_add_habit"
             android:layout_width="match_parent"
@@ -109,6 +123,7 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
+        <!-- Formulaire qui permet d'ajouter une habitude -->
         <LinearLayout
             android:id="@+id/layout_habit_form"
             android:layout_width="match_parent"
@@ -121,6 +136,7 @@
             android:padding="16dp"
             android:visibility="gone">
 
+            <!-- Titre du formulaire -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,6 +145,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Label du choix de l'habitude -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +155,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Liste déroulante pour choisir le type d'habitude -->
             <Spinner
                 android:id="@+id/spinner_habit"
                 android:layout_width="match_parent"
@@ -149,6 +167,7 @@
                 android:paddingRight="8dp"
                 android:popupBackground="@color/white" />
 
+            <!-- Label du choix de la fréquence -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,6 +177,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Liste déroulante pour choisir la fréquence de l'habitude -->
             <Spinner
                 android:id="@+id/spinner_frequency"
                 android:layout_width="match_parent"
@@ -169,6 +189,7 @@
                 android:paddingRight="8dp"
                 android:popupBackground="@color/white" />
 
+            <!-- Message d'erreur affiché si le formulaire n'est pas correct -->
             <TextView
                 android:id="@+id/tv_habit_error"
                 android:layout_width="match_parent"
@@ -178,12 +199,14 @@
                 android:textSize="12sp"
                 android:visibility="gone" />
 
+            <!-- Ligne qui contient les boutons du formulaire -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
+                <!-- Bouton pour enregistrer l'habitude sélectionnée -->
                 <Button
                     android:id="@+id/btn_save_habit"
                     android:layout_width="0dp"
@@ -194,6 +217,7 @@
                     android:text="Enregistrer"
                     android:textColor="@color/white" />
 
+                <!-- Bouton pour annuler l'ajout de l'habitude -->
                 <Button
                     android:id="@+id/btn_cancel_habit"
                     android:layout_width="0dp"
@@ -205,6 +229,7 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Bloc qui affiche la liste des habitudes ajoutées -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -214,6 +239,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titre de la liste des habitudes -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -222,6 +248,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Message affiché quand aucune habitude n'est enregistrée -->
             <TextView
                 android:id="@+id/tv_empty_habits"
                 android:layout_width="match_parent"
@@ -231,6 +258,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="14sp" />
 
+            <!-- Conteneur où les habitudes seront ajoutées dynamiquement -->
             <LinearLayout
                 android:id="@+id/ll_habits_container"
                 android:layout_width="match_parent"
@@ -238,6 +266,7 @@
                 android:orientation="vertical" />
         </LinearLayout>
 
+        <!-- Bloc qui affiche les scores regroupés par catégorie -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -246,6 +275,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titre de la section des scores par catégorie -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -254,6 +284,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Message affiché quand il n'y a pas encore de scores -->
             <TextView
                 android:id="@+id/tv_empty_scores"
                 android:layout_width="match_parent"
@@ -263,6 +294,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="14sp" />
 
+            <!-- Conteneur où les scores par catégorie seront affichés -->
             <LinearLayout
                 android:id="@+id/ll_category_scores_container"
                 android:layout_width="match_parent"

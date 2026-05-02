@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView pour pouvoir faire défiler la page si le contenu dépasse l'écran -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,11 +12,13 @@
     android:paddingEnd="16dp"
     android:paddingBottom="96dp">
 
+    <!-- Conteneur vertical principal de la page conseils et marketplace -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Titre principal de l'écran -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +28,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!-- Petit texte descriptif sous le titre -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +37,7 @@
             android:textColor="@color/text_gray"
             android:textSize="14sp" />
 
+        <!-- Bloc qui contient la partie des conseils personnalisés -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +47,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titre de la section conseils personnalisés -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,6 +57,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Description de la section conseils -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,6 +66,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="13sp" />
 
+            <!-- Bouton qui permet de générer les conseils avec l'IA -->
             <Button
                 android:id="@+id/btn_generate_advice"
                 android:layout_width="match_parent"
@@ -68,6 +77,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
+            <!-- Barre de chargement affichée pendant la génération des conseils -->
             <ProgressBar
                 android:id="@+id/progress_advice"
                 android:layout_width="wrap_content"
@@ -76,6 +86,7 @@
                 android:layout_marginBottom="12dp"
                 android:visibility="gone" />
 
+            <!-- Message affiché s'il y a une erreur pendant la génération -->
             <TextView
                 android:id="@+id/tv_advice_error"
                 android:layout_width="match_parent"
@@ -85,6 +96,7 @@
                 android:textSize="14sp"
                 android:visibility="gone" />
 
+            <!-- Texte qui affiche les conseils générés ou le message par défaut -->
             <TextView
                 android:id="@+id/tv_advice"
                 android:layout_width="match_parent"
@@ -94,6 +106,7 @@
                 android:textColor="@color/text_dark"
                 android:textSize="15sp" />
 
+            <!-- Conteneur dans lequel les cartes de conseils peuvent être ajoutées dynamiquement -->
             <LinearLayout
                 android:id="@+id/layout_advice_cards"
                 android:layout_width="match_parent"
@@ -101,6 +114,7 @@
                 android:orientation="vertical" />
         </LinearLayout>
 
+        <!-- Bloc marketplace qui sert à proposer des appareils écologiques -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,6 +123,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titre de la section des appareils suggérés -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,6 +133,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <!-- Texte de statut pour indiquer l'état de la marketplace -->
             <TextView
                 android:id="@+id/tv_marketplace_status"
                 android:layout_width="match_parent"
@@ -126,6 +142,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="14sp" />
 
+            <!-- Bouton qui lance la suggestion d'appareils -->
             <Button
                 android:id="@+id/btn_suggest_devices"
                 android:layout_width="match_parent"
@@ -135,6 +152,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
+            <!-- Chargement affiché pendant la recherche des appareils suggérés -->
             <ProgressBar
                 android:id="@+id/progress_marketplace"
                 android:layout_width="wrap_content"
@@ -144,6 +162,7 @@
                 android:visibility="gone" />
         </LinearLayout>
 
+        <!-- Conteneur où les produits de la marketplace seront affichés -->
         <LinearLayout
             android:id="@+id/layout_marketplace_products"
             android:layout_width="match_parent"

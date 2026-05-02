@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView pour pouvoir défiler sur la page boutique -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
 
+    <!-- Conteneur principal de la page boutique -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header Orange -->
+        <!-- En-tête orange avec le nom de l'application -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,8 +20,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
-
+            <!-- Nom de l'application affiché en haut de l'écran -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +29,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Shop Header -->
+        <!-- Bloc de présentation de la boutique éco-responsable -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,11 +38,13 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Icône de présentation de la boutique -->
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/app_name" />
 
+            <!-- Titre de la boutique -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,6 +54,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Description de la boutique -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,18 +64,20 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- Category Tabs -->
+        <!-- Liste horizontale des catégories de produits -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
 
+            <!-- Conteneur des boutons de catégories -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
+                <!-- Bouton pour afficher tous les produits -->
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,6 +86,7 @@
                     android:text="Tous"
                     android:textColor="@color/white" />
 
+                <!-- Bouton pour filtrer les réfrigérateurs -->
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,6 +95,7 @@
                     android:text="Réfrigérateur"
                     android:textColor="@color/text_gray" />
 
+                <!-- Bouton pour filtrer les lave-linges -->
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,6 +104,7 @@
                     android:text="Lave-linge"
                     android:textColor="@color/text_gray" />
 
+                <!-- Bouton pour filtrer les télévisions -->
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +114,7 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <!-- Certified Partners Info -->
+        <!-- Bloc d'information sur les partenaires certifiés -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,11 +125,13 @@
             android:orientation="horizontal"
             android:padding="12dp">
 
+            <!-- Icône du bloc partenaires -->
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/app_name" />
 
+            <!-- Texte expliquant que les produits viennent de partenaires certifiés -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -130,7 +142,7 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- Product Card 1 -->
+        <!-- Carte d'un produit affiché dans la boutique -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,18 +153,20 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Product Image Placeholder -->
+            <!-- Zone prévue pour l'image du produit -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/bg_light">
 
+                <!-- Contenu affiché au centre de l'image du produit -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical">
 
+                    <!-- Badge indiquant que le produit est sponsorisé -->
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -161,6 +175,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp" />
 
+                    <!-- Badge de classe énergétique du produit -->
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,6 +185,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp" />
 
+                    <!-- Texte temporaire à la place de l'image du produit -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -179,13 +195,14 @@
                 </LinearLayout>
             </FrameLayout>
 
-            <!-- Product Info -->
+            <!-- Bloc contenant les informations du produit -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
+                <!-- Marque du produit -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,6 +210,7 @@
                     android:textColor="@color/primary_orange"
                     android:textSize="12sp" />
 
+                <!-- Nom du produit -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -202,19 +220,21 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- Rating -->
+                <!-- Ligne qui affiche la note du produit -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
+                    <!-- Étoiles de la note -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="⭐⭐⭐⭐⭐"
                         android:textSize="12sp" />
 
+                    <!-- Note numérique du produit -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -224,18 +244,20 @@
                         android:textSize="12sp" />
                 </LinearLayout>
 
-                <!-- Benefits -->
+                <!-- Ligne qui affiche le bénéfice écologique du produit -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
+                    <!-- Petite icône du bénéfice énergétique -->
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:contentDescription="@string/app_name" />
 
+                    <!-- Texte indiquant l'économie d'énergie -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -245,13 +267,14 @@
                         android:textSize="12sp" />
                 </LinearLayout>
 
-                <!-- Price and Button -->
+                <!-- Ligne avec le prix et le bouton pour voir l'offre -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
+                    <!-- Prix du produit -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -261,6 +284,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <!-- Bouton pour accéder à l'offre du produit -->
                     <Button
                         android:id="@+id/btn_view_offer"
                         android:layout_width="wrap_content"

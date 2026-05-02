@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView pour pouvoir défiler si la page est trop grande -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
 
+    <!-- Conteneur principal de l'écran de gestion des appareils -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
+        <!-- En-tête de la page avec le nom de l'application et le titre de l'écran -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,6 +21,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Nom de l'application -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,6 +29,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
+            <!-- Titre de la page -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,6 +40,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Carte qui affiche la consommation totale des appareils enregistrés -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +49,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Libellé de la consommation totale -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +57,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
+            <!-- Valeur de la consommation totale en kWh par jour -->
             <TextView
                 android:id="@+id/tv_total_consumption"
                 android:layout_width="match_parent"
@@ -59,6 +68,7 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
+            <!-- Nombre d'appareils enregistrés -->
             <TextView
                 android:id="@+id/tv_device_count"
                 android:layout_width="match_parent"
@@ -69,6 +79,7 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <!-- Bouton qui permet d'afficher le formulaire d'ajout d'un appareil -->
         <Button
             android:id="@+id/btn_add_device"
             android:layout_width="match_parent"
@@ -82,6 +93,7 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
+        <!-- Formulaire pour ajouter ou modifier un appareil -->
         <LinearLayout
             android:id="@+id/layout_device_form"
             android:layout_width="match_parent"
@@ -94,6 +106,7 @@
             android:padding="16dp"
             android:visibility="gone">
 
+            <!-- Titre du formulaire, il change selon ajout ou modification -->
             <TextView
                 android:id="@+id/tv_form_title"
                 android:layout_width="match_parent"
@@ -103,6 +116,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Label du champ type -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,6 +126,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Champ pour saisir le type de l'appareil -->
             <EditText
                 android:id="@+id/et_device_type"
                 android:layout_width="match_parent"
@@ -126,6 +141,7 @@
                 android:textColorHint="@color/text_light"
                 android:textSize="14sp" />
 
+            <!-- Label du champ référence -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,6 +151,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Champ pour écrire la référence ou la puissance de l'appareil -->
             <EditText
                 android:id="@+id/et_device_reference"
                 android:layout_width="match_parent"
@@ -149,6 +166,7 @@
                 android:textColorHint="@color/text_light"
                 android:textSize="14sp" />
 
+            <!-- Label du champ durée d'utilisation -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,6 +176,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Champ pour indiquer combien d'heures l'appareil est utilisé par jour -->
             <EditText
                 android:id="@+id/et_daily_usage"
                 android:layout_width="match_parent"
@@ -172,6 +191,7 @@
                 android:textColorHint="@color/text_light"
                 android:textSize="14sp" />
 
+            <!-- Texte qui affiche la consommation estimée après le calcul -->
             <TextView
                 android:id="@+id/tv_calculated_consumption"
                 android:layout_width="match_parent"
@@ -182,6 +202,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <!-- Message d'erreur affiché si les informations saisies ne sont pas correctes -->
             <TextView
                 android:id="@+id/tv_device_error"
                 android:layout_width="match_parent"
@@ -191,12 +212,14 @@
                 android:textSize="12sp"
                 android:visibility="gone" />
 
+            <!-- Ligne avec les boutons pour calculer et enregistrer -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
+                <!-- Bouton pour calculer la consommation de l'appareil -->
                 <Button
                     android:id="@+id/btn_calculate_consumption"
                     android:layout_width="0dp"
@@ -207,6 +230,7 @@
                     android:text="Calculer"
                     android:textColor="@color/text_gray" />
 
+                <!-- Bouton pour enregistrer l'appareil dans la liste -->
                 <Button
                     android:id="@+id/btn_save_device"
                     android:layout_width="0dp"
@@ -217,6 +241,7 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
+            <!-- Bouton pour annuler l'ajout ou la modification -->
             <Button
                 android:id="@+id/btn_cancel_device"
                 android:layout_width="match_parent"
@@ -227,6 +252,7 @@
                 android:textColor="@color/text_gray" />
         </LinearLayout>
 
+        <!-- Bloc qui affiche la liste des appareils de l'utilisateur -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,6 +262,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titre de la liste des appareils -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -244,6 +271,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Message affiché quand aucun appareil n'est enregistré -->
             <TextView
                 android:id="@+id/tv_empty_devices"
                 android:layout_width="match_parent"
@@ -253,6 +281,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="14sp" />
 
+            <!-- Conteneur dans lequel les appareils ajoutés seront affichés -->
             <LinearLayout
                 android:id="@+id/ll_devices_container"
                 android:layout_width="match_parent"

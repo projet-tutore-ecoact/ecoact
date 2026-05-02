@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu utilisé pour la barre de navigation du bas avec les icônes -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Onglet vers la page d'accueil -->
     <item
         android:id="@+id/homeFragment"
         android:title="Accueil"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home" />
 
+    <!-- Onglet vers la page de gestion des appareils -->
     <item
         android:id="@+id/devicesFragment"
         android:title="Appareils"
-        android:icon="@drawable/ic_devices"/>
+        android:icon="@drawable/ic_devices" />
 
+    <!-- Onglet vers la page de gestion des habitudes -->
     <item
         android:id="@+id/habitsFragment"
         android:title="Habitudes"
-        android:icon="@drawable/ic_habits"/>
+        android:icon="@drawable/ic_habits" />
 
-<!--    <item-->
-<!--        android:id="@+id/shopFragment"-->
-<!--        android:title="Boutique"-->
-<!--        android:icon="@drawable/ic_shop"/>-->
+    <!--
+        Onglet boutique désactivé pour le moment.
+        Il pourra être remis si la boutique est ajoutée à la navigation.
+    -->
+    <!--
+    <item
+        android:id="@+id/shopFragment"
+        android:title="Boutique"
+        android:icon="@drawable/ic_shop" />
+    -->
 
+    <!-- Onglet vers la page profil de l'utilisateur -->
     <item
         android:id="@+id/profileFragment"
         android:title="Profil"
-        android:icon="@drawable/ic_profile"/>
-   
-        <item
-    android:id="@+id/adviceFragment"
-    android:title="Conseils"
-    android:icon="@drawable/ic_shop"/>
+        android:icon="@drawable/ic_profile" />
+
+    <!-- Onglet vers la page des conseils personnalisés -->
+    <item
+        android:id="@+id/adviceFragment"
+        android:title="Conseils"
+        android:icon="@drawable/ic_shop" />
+
 </menu>

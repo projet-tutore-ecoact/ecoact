@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu utilisé pour la barre de navigation en bas de l'application -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Onglet vers la page d'accueil -->
     <item
         android:id="@+id/homeFragment"
         android:title="Accueil" />
+
+    <!-- Onglet vers la page de gestion des appareils -->
     <item
         android:id="@+id/devicesFragment"
         android:title="Appareils" />
+
+    <!-- Onglet vers la page de gestion des habitudes -->
     <item
         android:id="@+id/habitsFragment"
         android:title="Habitudes" />
-<!--    <item-->
-<!--        android:id="@+id/shopFragment"-->
-<!--        android:title="Boutique" />-->
+
+    <!--
+        Onglet boutique désactivé pour le moment.
+        Il pourra être réactivé si la page boutique est utilisée dans la navigation.
+    -->
+    <!--
+    <item
+        android:id="@+id/shopFragment"
+        android:title="Boutique" />
+    -->
+
+    <!-- Onglet vers la page profil de l'utilisateur -->
     <item
         android:id="@+id/profileFragment"
         android:title="Profil" />
+
+    <!-- Onglet vers la page de démonstration de l'API -->
     <item
         android:id="@+id/testFragment"
         android:title="Demo API" />
-        <item
-    android:id="@+id/adviceFragment"
-    android:title="Conseils" />
+
+    <!-- Onglet vers la page des conseils personnalisés -->
+    <item
+        android:id="@+id/adviceFragment"
+        android:title="Conseils" />
+
 </menu>

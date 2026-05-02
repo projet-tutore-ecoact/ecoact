@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Fichier Manifest qui contient la configuration principale de l'application Android -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permission pour permettre à l'application d'utiliser Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Configuration générale de l'application -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
+        <!-- Activité principale de l'application -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+
+            <!--
+                Intent-filter qui indique que MainActivity est le point d'entrée.
+                C'est cette activité qui se lance quand on ouvre l'application.
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
