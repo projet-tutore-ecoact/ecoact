@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Graphe de navigation de l'application.
+    Il définit les écrans disponibles et les passages possibles entre eux.
+-->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
-    <!-- Authentication Fragments -->
+    <!-- Partie authentification : connexion et inscription -->
+
+    <!-- Fragment de connexion, affiché au lancement de l'application -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.project.ecoact.ui.fragments.LoginFragment"
         android:label="Connexion"
         tools:layout="@layout/fragment_login">
+
+        <!-- Action pour aller de la connexion vers l'inscription -->
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+
+        <!--
+            Action pour aller vers l'accueil après connexion.
+            popUpTo permet de retirer l'écran de connexion de la pile de navigation.
+        -->
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -21,14 +35,22 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <!-- Fragment d'inscription -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.project.ecoact.ui.fragments.RegisterFragment"
         android:label="S'inscrire"
         tools:layout="@layout/fragment_register">
+
+        <!-- Action pour revenir vers la page de connexion -->
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+
+        <!--
+            Action pour aller vers l'accueil après inscription.
+            On retire l'écran d'inscription de la pile pour éviter de revenir dessus avec retour.
+        -->
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -36,26 +58,36 @@
             app:popUpToInclusive="true" />
     </fragment>
 
-    <!-- Main Navigation Fragments -->
+    <!-- Partie principale de l'application -->
+
+    <!-- Fragment de la page d'accueil -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.project.ecoact.ui.fragments.HomeFragment"
         android:label="Home" />
 
+    <!-- Fragment de gestion des appareils -->
     <fragment
         android:id="@+id/devicesFragment"
         android:name="com.project.ecoact.ui.fragments.DevicesFragment"
         android:label="Devices" />
 
+    <!-- Fragment de gestion des habitudes -->
     <fragment
         android:id="@+id/habitsFragment"
         android:name="com.project.ecoact.ui.fragments.HabitsFragment"
         android:label="Habits" />
 
+    <!-- Fragment du profil utilisateur -->
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.project.ecoact.ui.fragments.ProfileFragment"
         android:label="Profile">
+
+        <!--
+            Action utilisée pour revenir à la connexion, par exemple après une déconnexion.
+            popUpTo évite de revenir au profil avec le bouton retour.
+        -->
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -63,18 +95,23 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <!-- Fragment de la boutique -->
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.project.ecoact.ui.fragments.ShopFragment"
         android:label="Shop" />
 
+    <!-- Fragment de démonstration de l'API Impact CO2 -->
     <fragment
         android:id="@+id/testFragment"
         android:name="com.project.ecoact.ui.fragments.ImpactDemoFragment"
         android:label="Impact Demo"
         tools:layout="@layout/fragment_impact_demo" />
-        <fragment
-    android:id="@+id/adviceFragment"
-    android:name="com.project.ecoact.ui.fragments.AdviceFragment"
-    android:label="Conseils" />
+
+    <!-- Fragment des conseils personnalisés -->
+    <fragment
+        android:id="@+id/adviceFragment"
+        android:name="com.project.ecoact.ui.fragments.AdviceFragment"
+        android:label="Conseils" />
+
 </navigation>

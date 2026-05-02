@@ -1,14 +1,17 @@
 <resources>
+
+    <!-- Nom de l'application affiché dans Android -->
     <string name="app_name">EcoAct</string>
 
-    <!-- Authentication -->
+    <!-- Textes utilisés pour les écrans d'authentification -->
     <string name="login">Connexion</string>
     <string name="register">S\'inscrire</string>
 
-    <!-- Bottom Navigation -->
+    <!-- Textes utilisés dans la barre de navigation du bas -->
     <string name="home">Accueil</string>
     <string name="habits">Habitudes</string>
     <string name="devices">Appareils</string>
     <string name="shop">Boutique</string>
     <string name="profile">Profil</string>
+
 </resources>

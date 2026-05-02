@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ScrollView pour permettre de faire défiler la page si tout ne rentre pas à l'écran -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
 
+    <!-- Conteneur principal de l'écran d'accueil / consommation -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header Orange -->
+        <!-- En-tête orange avec le nom de l'application -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,7 +21,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
+            <!-- Nom de l'application affiché en haut de la page -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,14 +30,14 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Energy Cards Row -->
+        <!-- Ligne qui affiche les trois cartes de consommation : électricité, gaz et eau -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp">
 
-            <!-- Electricity Card -->
+            <!-- Carte qui affiche la consommation d'électricité -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -44,11 +47,13 @@
                 android:orientation="vertical"
                 android:padding="12dp">
 
+                <!-- Icône de la carte électricité -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:contentDescription="@string/app_name" />
 
+                <!-- Nom de la catégorie -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,6 +61,7 @@
                     android:textColor="@color/text_gray"
                     android:textSize="12sp" />
 
+                <!-- Valeur de consommation électrique -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,6 +70,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <!-- Petit indicateur d'évolution de la consommation -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,6 +79,7 @@
                     android:orientation="horizontal"
                     android:padding="4dp">
 
+                    <!-- Pourcentage d'évolution pour l'électricité -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -82,7 +90,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Gas Card -->
+            <!-- Carte qui affiche la consommation de gaz -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -92,11 +100,13 @@
                 android:orientation="vertical"
                 android:padding="12dp">
 
+                <!-- Icône de la carte gaz -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:contentDescription="@string/app_name" />
 
+                <!-- Nom de la catégorie -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,6 +114,7 @@
                     android:textColor="@color/text_gray"
                     android:textSize="12sp" />
 
+                <!-- Valeur de consommation du gaz -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +123,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <!-- Petit indicateur d'évolution de la consommation -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,6 +132,7 @@
                     android:orientation="horizontal"
                     android:padding="4dp">
 
+                    <!-- Pourcentage d'évolution pour le gaz -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -130,7 +143,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Water Card -->
+            <!-- Carte qui affiche la consommation d'eau -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -139,11 +152,13 @@
                 android:orientation="vertical"
                 android:padding="12dp">
 
+                <!-- Icône de la carte eau -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:contentDescription="@string/app_name" />
 
+                <!-- Nom de la catégorie -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,6 +166,7 @@
                     android:textColor="@color/text_gray"
                     android:textSize="12sp" />
 
+                <!-- Valeur de consommation d'eau -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -159,6 +175,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <!-- Petit indicateur d'évolution de la consommation -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,6 +184,7 @@
                     android:orientation="horizontal"
                     android:padding="4dp">
 
+                    <!-- Pourcentage d'évolution pour l'eau -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -178,7 +196,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Time Period Buttons -->
+        <!-- Boutons pour choisir la période affichée dans les statistiques -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -186,6 +204,7 @@
             android:orientation="horizontal"
             android:padding="16dp">
 
+            <!-- Bouton pour afficher les données de la semaine -->
             <Button
                 android:id="@+id/btn_week"
                 android:layout_width="wrap_content"
@@ -198,6 +217,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
+            <!-- Bouton pour afficher les données du mois -->
             <Button
                 android:id="@+id/btn_month"
                 android:layout_width="wrap_content"
@@ -210,7 +230,7 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Chart Container -->
+        <!-- Zone prévue pour afficher le graphique de consommation -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -219,6 +239,7 @@
             android:layout_marginBottom="16dp"
             android:background="@color/white">
 
+            <!-- Texte temporaire affiché à la place du graphique -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -227,15 +248,15 @@
                 android:textColor="@color/text_gray" />
         </FrameLayout>
 
-        <!-- Distribution Pie Chart -->
+        <!-- Bloc qui affiche la répartition de la consommation sous forme de camembert -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-
             android:orientation="vertical"
             android:layout_margin="16dp">
 
+            <!-- Titre de la partie répartition de la consommation -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -244,11 +265,13 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Zone prévue pour afficher le graphique en camembert -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_margin="16dp">
 
+                <!-- Texte temporaire affiché à la place du camembert -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
