@@ -15,16 +15,21 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+// Repository qui gere les produits eco et les recommandations
 public class EcoProductRepository {
+    // Nombre maximum de produits recommandés
     private static final int MAX_RECOMMENDATIONS = 4;
 
+    // DAO utilise pour acceder aux produits en base de donnees
     private final EcoProductDao ecoProductDao;
 
+    // Recupere la base de donnees et initialise le DAO
     public EcoProductRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
         ecoProductDao = db.ecoProductDao();
     }
 
+    // Ajoute les produits par defaut si la base n'en contient pas assez
     public void seedDefaultsIfNeeded() {
         List<EcoProductEntity> defaults = buildDefaultProducts();
         if (ecoProductDao.countProducts() >= defaults.size()) {
@@ -33,12 +38,15 @@ public class EcoProductRepository {
         ecoProductDao.insertAll(defaults);
     }
 
+    // Retourne des produits recommandes selon les appareils et habitudes
     public RecommendationResult getRecommendations(List<DeviceEntity> devices, List<HabitEntity> habits) {
         seedDefaultsIfNeeded();
 
+        // Evite les erreurs si les listes sont nulles
         List<DeviceEntity> safeDevices = devices == null ? new ArrayList<>() : devices;
         List<HabitEntity> safeHabits = habits == null ? new ArrayList<>() : habits;
 
+        // Si le profil est vide, on ne peut pas proposer de vraie recommandation
         if (safeDevices.isEmpty() && safeHabits.isEmpty()) {
             return new RecommendationResult(
                     new ArrayList<>(),
@@ -47,6 +55,7 @@ public class EcoProductRepository {
             );
         }
 
+        // Calcule les principaux indicateurs du profil utilisateur
         double yearlyConsumptionKwh = calculateYearlyConsumption(safeDevices);
         double maxDailyConsumptionKwh = calculateMaxDailyConsumption(safeDevices);
         int habitScore = calculateHabitScore(safeHabits);
@@ -56,6 +65,7 @@ public class EcoProductRepository {
                 && yearlyConsumptionKwh <= 650
                 && maxDailyConsumptionKwh <= 1.6;
 
+        // Si le profil est deja tres bon, on evite un achat inutile
         if (hasCompleteProfile && hasEcoHabits && hasLowConsumption) {
             return new RecommendationResult(
                     new ArrayList<>(),
@@ -68,6 +78,7 @@ public class EcoProductRepository {
         addDeviceBasedCategories(categories, safeDevices);
         addHabitBasedCategories(categories, safeHabits);
 
+        // Si rien de precis n'est trouve, on propose des categories utiles
         if (categories.isEmpty() && yearlyConsumptionKwh > 900) {
             addUnique(categories, "refrigerateur");
             addUnique(categories, "lave_linge");
@@ -87,6 +98,7 @@ public class EcoProductRepository {
         return new RecommendationResult(selectedProducts, message, false);
     }
 
+    // Cree la liste des produits disponibles par defaut
     private static List<EcoProductEntity> buildDefaultProducts() {
         List<EcoProductEntity> products = new ArrayList<>();
 
@@ -185,6 +197,7 @@ public class EcoProductRepository {
         return products;
     }
 
+    // Calcule la consommation annuelle totale des appareils.
     private double calculateYearlyConsumption(List<DeviceEntity> devices) {
         double total = 0;
         for (DeviceEntity device : devices) {
@@ -193,6 +206,7 @@ public class EcoProductRepository {
         return total;
     }
 
+    // Trouve la plus grande consommation quotidienne.
     private double calculateMaxDailyConsumption(List<DeviceEntity> devices) {
         double max = 0;
         for (DeviceEntity device : devices) {
@@ -201,6 +215,7 @@ public class EcoProductRepository {
         return max;
     }
 
+    // Calcule le score des habitudes sur 100.
     private int calculateHabitScore(List<HabitEntity> habits) {
         int points = 0;
         int maxPoints = 0;
@@ -214,6 +229,7 @@ public class EcoProductRepository {
         return (int) Math.round((points * 100.0) / maxPoints);
     }
 
+    // Ajoute des categories selon les appareils
     private void addDeviceBasedCategories(List<String> categories, List<DeviceEntity> devices) {
         for (DeviceEntity device : devices) {
             String type = normalize(device.getType() + " " + device.getReference());
@@ -236,6 +252,7 @@ public class EcoProductRepository {
         }
     }
 
+    // Ajoute des categories selon les habitudes
     private void addHabitBasedCategories(List<String> categories, List<HabitEntity> habits) {
         for (HabitEntity habit : habits) {
             if (habit.getMaxPoints() <= 0) {
@@ -269,6 +286,7 @@ public class EcoProductRepository {
         }
     }
 
+    // Garde le meilleur produit pour chaque categorie
     private List<EcoProductEntity> keepBestProductPerCategory(List<EcoProductEntity> products) {
         List<EcoProductEntity> selectedProducts = new ArrayList<>();
         Set<String> selectedCategories = new HashSet<>();
@@ -285,12 +303,14 @@ public class EcoProductRepository {
         return selectedProducts;
     }
 
+    // Ajoute une categorie seulement si elle n'existe pas deja
     private static void addUnique(List<String> categories, String category) {
         if (!categories.contains(category)) {
             categories.add(category);
         }
     }
 
+    // Nettoie un texte pour comparer plus facilement
     private static String normalize(String value) {
         if (value == null) {
             return "";
@@ -300,25 +320,33 @@ public class EcoProductRepository {
         return normalized.toLowerCase(Locale.FRANCE);
     }
 
+    // Resultat final d'une recommandation
     public static class RecommendationResult {
+        // Produits recommandes
         private final List<EcoProductEntity> products;
+        // Message affiche a l'utilisateur
         private final String message;
+        // Indique si le profil est deja tres bon
         private final boolean topProfile;
 
+        // Cree un resultat de recommandation
         public RecommendationResult(List<EcoProductEntity> products, String message, boolean topProfile) {
             this.products = products;
             this.message = message;
             this.topProfile = topProfile;
         }
 
+        // Retourne les produits recommandes
         public List<EcoProductEntity> getProducts() {
             return products;
         }
 
+        // Retourne le message
         public String getMessage() {
             return message;
         }
 
+        // Retourne true si le profil est deja au top
         public boolean isTopProfile() {
             return topProfile;
         }
