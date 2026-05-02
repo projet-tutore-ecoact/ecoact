@@ -1,3 +1,4 @@
+// Migration des bases de données
 package com.project.ecoact.data.databaseConf;
 
 import android.content.Context;
@@ -21,7 +22,6 @@ import com.project.ecoact.data.entity.User;
 
 /**
  * Configuration principale de la base de données Room pour EcoAct.
- * 
  * Gère:
  * - Définition des entités
  * - Version du schéma
@@ -91,7 +91,7 @@ public abstract class AppDatabase extends RoomDatabase {
     };
 
     /**
-     * Migration v5->v6: Ajout de la marketplace d'appareils partenaires sobres.
+     * Migration v5->v6: Ajout de la marketplace d'appareils partenaires.
      */
     public static final Migration MIGRATION_5_6 = new Migration(5, 6) {
         @Override
