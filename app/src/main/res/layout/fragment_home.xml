@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light">
+    android:background="@color/bg_light"
+    android:clipToPadding="false"
+    android:paddingBottom="96dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header Orange -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,212 +24,104 @@
                 android:text="EcoAct"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Suivi de consommation électrique"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Energy Cards Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/card_background_green"
+            android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Electricity Card -->
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/card_background_green"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:text="Consommation actuelle"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/app_name" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Electricité"
-                    android:textColor="@color/text_gray"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_electricity_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="105 kWh"
-                    android:textColor="@color/text_dark"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/accent_teal"
-                    android:orientation="horizontal"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:id="@+id/tv_electricity_trend"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="+8%"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Gas Card -->
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tv_electricity_value"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/card_background_orange"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="4dp"
+                android:text="0 kWh/jour"
+                android:textColor="@color/text_dark"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/app_name" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gaz"
-                    android:textColor="@color/text_gray"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_gas_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="57 m³"
-                    android:textColor="@color/text_dark"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/primary_orange"
-                    android:orientation="horizontal"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:id="@+id/tv_gas_trend"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="+5%"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Water Card -->
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tv_period_consumption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/card_background_blue"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="6dp"
+                android:text="0 kWh sur la période"
+                android:textColor="@color/text_dark"
+                android:textSize="14sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/app_name" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Eau"
-                    android:textColor="@color/text_gray"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_water_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="41 m³"
-                    android:textColor="@color/text_dark"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/accent_blue"
-                    android:orientation="horizontal"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:id="@+id/tv_water_trend"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="-8%"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_electricity_trend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/accent_teal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="Stable"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Time Period Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp">
 
             <Button
                 android:id="@+id/btn_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
+                android:layout_weight="1"
                 android:background="@drawable/button_orange_background"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-                android:text="Semaine"
+                android:text="7 jours"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
                 android:background="@drawable/button_gray_background"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-                android:text="Mois"
+                android:text="30 jours"
                 android:textColor="@color/text_gray"
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Chart Container -->
-        <FrameLayout
-            android:id="@+id/chart_container"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/white" />
-
-        <!-- Distribution Pie Chart -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:padding="16dp">
@@ -237,16 +129,57 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Répartition de la Consommation"
+                android:text="Évolution"
                 android:textColor="@color/text_dark"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_comparison_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
+
+            <FrameLayout
+                android:id="@+id/chart_container"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Répartition par appareil"
+                android:textColor="@color/text_dark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_distribution_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp" />
+
             <FrameLayout
                 android:id="@+id/pie_container"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp" />
+                android:layout_height="240dp"
+                android:layout_marginTop="12dp" />
         </LinearLayout>
 
     </LinearLayout>
