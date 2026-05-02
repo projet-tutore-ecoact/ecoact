@@ -1,3 +1,6 @@
+/* classe principale de l'application, gère la navigation et l'affichage de la barre de navigation inférieur. 
+* Elle vérifie également la session utilisateur au démarrage et redirige vers l'écran de connexion si nécessaire.
+*/
 package com.project.ecoact;
 
 import android.os.Build;
@@ -5,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private SessionManager sessionManager;
 
+    // Vérifier la session utilisateur au démarrage
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
