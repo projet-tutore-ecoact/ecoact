@@ -1,10 +1,13 @@
 package com.project.ecoact.data.network;
 
 import java.util.List;
-
+/**
+ * Représente la réponse JSON de l'API Mistral.
+ * On lit uniquement choices[0].message.content pour récupérer le conseil.
+ */
 public class MistralResponse {
 
-    private List<Choice> choices;
+    private List<Choice> choices;// Mistral peut retourner plusieurs choix, on prend le premier
 
     public List<Choice> getChoices() {
         return choices;

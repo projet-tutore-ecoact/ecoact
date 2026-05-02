@@ -94,7 +94,7 @@ public class AdviceFragment extends Fragment {
             showMarketplaceIdleState();
         }
     }
-
+// Lance la génération de conseils via Mistral en back 
     private void generateAdvice() {
         showLoading(true);
         tvError.setVisibility(View.GONE);
@@ -153,7 +153,7 @@ public class AdviceFragment extends Fragment {
         btnSuggestDevices.setEnabled(true);
         tvMarketplaceStatus.setText("Cliquez pour analyser votre profil et afficher des appareils adaptés.");
     }
-
+// Charge les suggestions d'appareils eco-responsables selon le profil
     private void loadMarketplaceRecommendations() {
         Long userId = sessionManager.getCurrentUserId();
         marketplaceProductsContainer.removeAllViews();
@@ -192,9 +192,9 @@ public class AdviceFragment extends Fragment {
             marketplaceProductsContainer.addView(createProductCard(product));
         }
     }
-
+// Découpe la réponse Mistral en cartes individuels 
     private void renderAdviceCards(String advice) {
-        adviceCardsContainer.removeAllViews();
+        adviceCardsContainer.removeAllViews()
         List<String> adviceItems = extractAdviceItems(advice);
 
         if (adviceItems.isEmpty()) {
@@ -388,7 +388,7 @@ public class AdviceFragment extends Fragment {
         marketplaceProgress.setVisibility(loading ? View.VISIBLE : View.GONE);
         btnSuggestDevices.setEnabled(!loading && sessionManager.getCurrentUserId() != null);
     }
-
+// Parse le texte brut de Mistral pour extraire une liste de conseils
     private List<String> extractAdviceItems(String advice) {
         List<String> items = new ArrayList<>();
         if (advice == null || advice.trim().isEmpty()) {

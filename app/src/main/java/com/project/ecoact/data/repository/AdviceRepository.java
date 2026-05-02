@@ -12,11 +12,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+/**
+ * Gère les appel à l'API Mistral pour générer des conseils personnalisé
+ * On envoie les habitudes et appareils de l'utilisateur et Mistral répond avec des conseils.
+ */
 public class AdviceRepository {
 
     private static final String BASE_URL = "https://api.mistral.ai/";
-    private static final String API_KEY = "Bearer JbZbrQX46mrGVU9IVu5oGCw7NTnV4sPj";
+    private static final String API_KEY = "Bearer FyEa7rwbwZkKxXTNN7pVdQksRI7UXJUN";
     private static final String MODEL = "mistral-small-latest";
 
     private final MistralApi api;
@@ -28,6 +31,13 @@ public class AdviceRepository {
                 .build();
         api = retrofit.create(MistralApi.class);
     }
+     /**
+     * on envoie le prompt à Mistral avec les données de l'utilisateur.
+     *
+     * @param habitsData  résumé en texte des habitudes 
+     * @param devicesData résumé en texte des appareils
+     * @param callback    appelé avec le conseil généré ou un message d'erreur
+     */
 
     public void getAdvice(String habitsData, String devicesData, AdviceCallback callback) {
         String prompt = "Tu es un assistant éco-responsable. " +
@@ -50,6 +60,7 @@ public class AdviceRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     List<MistralResponse.Choice> choices = response.body().getChoices();
                     if (choices != null && !choices.isEmpty()) {
+                         // On récupère le texte du premier choix retourné par Mistral
                         callback.onSuccess(choices.get(0).getMessage().getContent());
                     } else {
                         callback.onError("Aucun conseil reçu");
@@ -61,6 +72,7 @@ public class AdviceRepository {
 
             @Override
             public void onFailure(Call<MistralResponse> call, Throwable t) {
+                 // Pas de réseau ou timeout
                 callback.onError("Erreur réseau : " + t.getMessage());
             }
         });

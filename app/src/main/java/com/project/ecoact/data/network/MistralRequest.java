@@ -1,7 +1,7 @@
 package com.project.ecoact.data.network;
 
 import java.util.List;
-
+// Represente le  body JSON envoyé à Mistral
 public class MistralRequest {
 
     private String model;
@@ -11,7 +11,7 @@ public class MistralRequest {
         this.model = model;
         this.messages = messages;
     }
-
+// On envoie toujours un seul message avec le rôle "user" 
     public static class Message {
         private String role;
         private String content;
