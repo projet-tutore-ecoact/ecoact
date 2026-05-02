@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    CONTENEUR PRINCIPAL : ScrollView
+    Permet à tout le contenu de défiler verticalement si l'écran est trop petit.
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,11 +10,17 @@
     android:clipToPadding="false"
     android:paddingBottom="96dp">
 
+    <!--
+        LAYOUT VERTICAL PRINCIPAL
+        Contient toutes les sections de l'écran organisées en colonne.
+    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- ===== SECTION 1 : EN-TÊTE ORANGE ===== -->
+        <!-- Bannière en haut avec le nom de l'application -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +45,8 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- ===== SECTION 2 : CARTE DE CONSOMMATION ACTUELLE ===== -->
+        <!-- Affiche les chiffres de consommation en gros caractères -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,6 +62,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="13sp" />
 
+            <!-- Valeur principale : kWh par jour (modifiable en code) -->
             <TextView
                 android:id="@+id/tv_electricity_value"
                 android:layout_width="match_parent"
@@ -60,6 +73,7 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
+            <!-- Consommation totale sur la période (modifiable en code) -->
             <TextView
                 android:id="@+id/tv_period_consumption"
                 android:layout_width="match_parent"
@@ -69,6 +83,7 @@
                 android:textColor="@color/text_dark"
                 android:textSize="14sp" />
 
+            <!-- Badge de tendance : Stable / Hausse / Baisse (modifiable en code) -->
             <TextView
                 android:id="@+id/tv_electricity_trend"
                 android:layout_width="wrap_content"
@@ -85,6 +100,8 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- ===== SECTION 3 : BOUTONS DE PÉRIODE ===== -->
+        <!-- Permet de basculer entre vue 7 jours / 30 jours -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,6 +133,8 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
+        <!-- ===== SECTION 4 : CARTE ÉVOLUTION (GRAPHIQUE) ===== -->
+        <!-- Conteneur pour un graphique montrant l'évolution dans le temps -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,6 +153,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Texte de résumé (ex: "En hausse de 5%") -->
             <TextView
                 android:id="@+id/tv_comparison_summary"
                 android:layout_width="match_parent"
@@ -142,6 +162,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="13sp" />
 
+            <!-- Zone où sera dessiné le graphique (ex: MPAndroidChart) -->
             <FrameLayout
                 android:id="@+id/chart_container"
                 android:layout_width="match_parent"
@@ -149,6 +170,8 @@
                 android:layout_marginTop="12dp" />
         </LinearLayout>
 
+        <!-- ===== SECTION 5 : CARTE RÉPARTITION PAR APPAREIL (CAMEMBERT) ===== -->
+        <!-- Conteneur pour un graphique circulaire montrant la répartition -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,6 +190,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <!-- Texte de résumé (ex: "Réfrigérateur: 40%") -->
             <TextView
                 android:id="@+id/tv_distribution_summary"
                 android:layout_width="match_parent"
@@ -175,6 +199,7 @@
                 android:textColor="@color/text_gray"
                 android:textSize="13sp" />
 
+            <!-- Zone où sera dessiné le graphique camembert -->
             <FrameLayout
                 android:id="@+id/pie_container"
                 android:layout_width="match_parent"
