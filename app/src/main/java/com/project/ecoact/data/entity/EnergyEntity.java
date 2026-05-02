@@ -1,3 +1,4 @@
+// Table energy
 package com.project.ecoact.data.entity;
 
 import androidx.room.Entity;

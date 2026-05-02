@@ -1,3 +1,4 @@
+// Attributs et types et setters guetters pour la table EcoProduct
 package com.project.ecoact.data.entity;
 
 import androidx.room.ColumnInfo;
@@ -6,6 +7,7 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+// à quoi ressemble la table
 @Entity(
         tableName = "eco_products",
         indices = {
@@ -59,6 +61,7 @@ public class EcoProductEntity {
     public EcoProductEntity() {
     }
 
+    // Constructeur de la table
     @Ignore
     public EcoProductEntity(String category, String brand, String reference, String name,
                             String energyClass, String energyInfo, String repairabilityScore,
@@ -79,6 +82,7 @@ public class EcoProductEntity {
         this.createdAt = System.currentTimeMillis();
     }
 
+    // Guetters et setters pour la classe
     public long getId() {
         return id;
     }

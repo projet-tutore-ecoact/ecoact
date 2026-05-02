@@ -1,3 +1,4 @@
+// Tables des habitudes
 package com.project.ecoact.data.entity;
 
 import androidx.room.ColumnInfo;
@@ -7,6 +8,7 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+// Attributs et types des colonnes de la table
 @Entity(
         tableName = "user_habits",
         foreignKeys = @ForeignKey(
@@ -21,9 +23,11 @@ import androidx.room.PrimaryKey;
         }
 )
 public class HabitEntity {
+    // Génération par room de la clef primaire
     @PrimaryKey(autoGenerate = true)
     private long id;
 
+    // définition des noms et types des colonnes
     @ColumnInfo(name = "user_id")
     private long userId;
 
@@ -54,6 +58,7 @@ public class HabitEntity {
     @ColumnInfo(name = "updated_at")
     private long updatedAt;
 
+    // Constructeur de la table
     @Ignore
     public HabitEntity(long userId, String habitKey, String category, String question,
                        String frequency, boolean inverted, int points, int maxPoints) {
@@ -69,9 +74,11 @@ public class HabitEntity {
         this.updatedAt = System.currentTimeMillis();
     }
 
+    // Constructeur vide pour room
     public HabitEntity() {
     }
 
+    // Guetters et setters pour la classe
     public long getId() {
         return id;
     }
