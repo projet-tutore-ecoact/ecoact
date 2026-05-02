@@ -3,7 +3,6 @@ package com.project.ecoact.data.network;
 import com.project.ecoact.domain.model.impactco2.AlimentationCategory;
 import com.project.ecoact.domain.model.impactco2.EcvData;
 import com.project.ecoact.domain.model.impactco2.EcvItem;
-import com.project.ecoact.domain.model.impactco2.FruitLegumeData;
 import com.project.ecoact.domain.model.impactco2.ImpactResponse;
 import com.project.ecoact.domain.model.impactco2.Thematique;
 import com.project.ecoact.domain.model.impactco2.TransportData;
@@ -36,10 +35,5 @@ public interface ImpactCo2Api {
 
     @GET("alimentation")
     Call<ImpactResponse<AlimentationCategory>> getAlimentation();
-
-    @GET("fruitsetlegumes")
-    Call<ImpactResponse<FruitLegumeData>> getFruitsEtLegumes(
-            @Query("month") Integer month
-    );
 }
 
