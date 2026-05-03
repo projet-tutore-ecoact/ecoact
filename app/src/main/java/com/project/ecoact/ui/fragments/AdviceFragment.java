@@ -194,7 +194,7 @@ public class AdviceFragment extends Fragment {
     }
 // Découpe la réponse Mistral en cartes individuels 
     private void renderAdviceCards(String advice) {
-        adviceCardsContainer.removeAllViews()
+        adviceCardsContainer.removeAllViews();
         List<String> adviceItems = extractAdviceItems(advice);
 
         if (adviceItems.isEmpty()) {

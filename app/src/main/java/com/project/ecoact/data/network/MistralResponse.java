@@ -22,7 +22,7 @@ public class MistralResponse {
     }
 
     public static class Message {
-        private String content;
+        private String content;   // le texte généré par Mistral
 
         public String getContent() {
             return content;
